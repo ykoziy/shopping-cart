@@ -1,6 +1,19 @@
 $bg-color: rgb(223, 217, 217);
 
 .App {
-  text-align: center;
   background-color: $bg-color;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
