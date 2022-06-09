@@ -1,4 +1,5 @@
 import '../style/app.scss';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 
 const App = () => {
@@ -17,7 +18,11 @@ const App = () => {
           </ul>
         </nav>
       </header>
-      <Home />
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
