@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import products from '../data/products';
+import ItemCard from './ItemCard';
+import products from '../../data/products';
 
 const Shop = () => {
   const [shopData, setShopData] = useState([]);
@@ -8,24 +9,22 @@ const Shop = () => {
     setShopData(products);
   }, []);
 
-  const dataToListItem = (data) => {
+  const dataToItemCard = (data) => {
     return (
-      <li key={data.id}>
-        Name: {data.name}
-        <br />
-        Description: {data.description}
-        <br />
-        Price: {data.price}
-        <br />
-        Image: {data.image}
-      </li>
+      <ItemCard
+        key={data.id}
+        name={data.name}
+        description={data.description}
+        price={data.price}
+        image={data.image}
+      />
     );
   };
 
   const renderProducts = () => {
     let listItems = [];
     for (let i = 0; i < shopData.length; i++) {
-      listItems.push(dataToListItem(shopData[i]));
+      listItems.push(dataToItemCard(shopData[i]));
     }
     console.log(listItems);
     return listItems;
@@ -34,7 +33,7 @@ const Shop = () => {
   return (
     <div>
       <h1>Hello from shop.</h1>
-      <ul>{renderProducts()}</ul>
+      {renderProducts()}
     </div>
   );
 };

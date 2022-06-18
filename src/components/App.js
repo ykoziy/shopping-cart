@@ -2,7 +2,7 @@ import '../style/app.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Header from './Header';
-import Shop from './Shop';
+import Shop from './Shop/Shop';
 import About from './About';
 import Cart from './Cart';
 
