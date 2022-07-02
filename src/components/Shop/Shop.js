@@ -2,21 +2,44 @@ import React, { useEffect, useState } from 'react';
 import ItemCard from './ItemCard';
 import products from '../../data/products';
 
-const Shop = () => {
+const Shop = (props) => {
   const [shopData, setShopData] = useState([]);
 
   useEffect(() => {
     setShopData(products);
   }, []);
 
+  const handleItemClick = (event) => {
+    let targetElement;
+    if (event.target.nodeName !== 'DIV') {
+      targetElement = event.target.parentNode;
+    } else {
+      targetElement = event.target;
+    }
+    let id = targetElement.getAttribute('data-id');
+    let item = shopData.find((item) => item.id === id);
+    if (item != null) {
+      let newItem = {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        count: 1,
+      };
+      props.onUpdate(newItem);
+    }
+    event.stopPropagation();
+  };
+
   const dataToItemCard = (data) => {
     return (
       <ItemCard
         key={data.id}
+        id={data.id}
         name={data.name}
         description={data.description}
         price={data.price}
         image={data.image}
+        onClickHandler={handleItemClick}
       />
     );
   };
@@ -26,7 +49,6 @@ const Shop = () => {
     for (let i = 0; i < shopData.length; i++) {
       listItems.push(dataToItemCard(shopData[i]));
     }
-    console.log(listItems);
     return listItems;
   };
 

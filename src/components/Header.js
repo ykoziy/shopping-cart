@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../style/header.scss';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <div className="Logo">
@@ -19,7 +19,7 @@ const Header = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Cart ({props.cartCount})</Link>
           </li>
         </ul>
       </nav>
