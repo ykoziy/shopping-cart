@@ -5,7 +5,7 @@ import Home from './Home';
 import Header from './Header';
 import Shop from './Shop/Shop';
 import About from './About';
-import Cart from './Cart';
+import Cart from './cart/Cart';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -36,6 +36,18 @@ const App = () => {
     }
   };
 
+  const onItemRemove = (itemId) => {
+    let countRemoved = 0;
+    let newCart = cart.filter((item) => {
+      if (item.id === itemId) {
+        countRemoved = item.count;
+      }
+      return item.id !== itemId;
+    });
+    setCart(newCart);
+    setCartCount(cartCount - countRemoved);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -49,7 +61,14 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route
             path="/cart"
-            element={<Cart onUpdate={onUpdate} cartCount={cartCount} />}
+            element={
+              <Cart
+                onUpdate={onUpdate}
+                onItemRemove={onItemRemove}
+                cartCount={cartCount}
+                cart={cart}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>
