@@ -17,7 +17,7 @@ const Shop = (props) => {
       targetElement = event.target;
     }
     let id = targetElement.getAttribute('data-id');
-    let item = shopData.find((item) => item.id === id);
+    let item = shopData.find((i) => i.id === id);
     if (item != null) {
       let newItem = {
         id: item.id,
@@ -46,8 +46,8 @@ const Shop = (props) => {
 
   const renderProducts = () => {
     let listItems = [];
-    for (let i = 0; i < shopData.length; i++) {
-      listItems.push(dataToItemCard(shopData[i]));
+    for (const element of shopData) {
+      listItems.push(dataToItemCard(element));
     }
     return listItems;
   };
