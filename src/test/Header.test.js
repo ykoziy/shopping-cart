@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { createMemoryHistory } from 'history';
 import Header from '../components/App';
 
 describe('Testing UI rendering', () => {
