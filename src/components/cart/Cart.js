@@ -1,11 +1,14 @@
 import CartItem from './CartItem';
 
 const Cart = (props) => {
-  const handleItemClick = (event) => {
+  const handleEmptyCartClick = () => {
+    props.onCartEmpty();
+  };
+
+  const handleRemoveItemClick = (event) => {
     const parentElement = event.target.parentNode.parentNode;
     const itemId = parentElement.getAttribute('data-id');
     props.onItemRemove(itemId);
-    event.stopPropagation();
   };
 
   const cartDataToCard = (data) => {
@@ -16,7 +19,7 @@ const Cart = (props) => {
         name={data.name}
         price={data.price}
         quantity={data.count}
-        onClickHandler={handleItemClick}
+        onClickHandler={handleRemoveItemClick}
       />
     );
   };
@@ -33,6 +36,9 @@ const Cart = (props) => {
     <div>
       <h1>Hello from cart.</h1>
       {renderProducts()}
+      <button onClick={handleEmptyCartClick} disabled={props.cart.length === 0}>
+        Empty Cart
+      </button>
     </div>
   );
 };

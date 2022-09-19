@@ -48,6 +48,11 @@ const App = () => {
     setCartCount(cartCount - countRemoved);
   };
 
+  const onCartEmpty = () => {
+    setCart([]);
+    setCartCount(0);
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -65,6 +70,7 @@ const App = () => {
               <Cart
                 onUpdate={onUpdate}
                 onItemRemove={onItemRemove}
+                onCartEmpty={onCartEmpty}
                 cartCount={cartCount}
                 cart={cart}
               />
