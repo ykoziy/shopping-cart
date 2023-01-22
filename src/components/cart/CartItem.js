@@ -7,6 +7,8 @@ const CartItem = (props) => {
       <p>Price: ${props.price}</p>
       <p>Quantity: {props.quantity}</p>
       <div className="interaction-container">
+        <button onClick={props.onRemoveQuantity}>-</button>
+        <button onClick={props.onAddQuantity}>+</button>
         <button onClick={props.onClickHandler}>Remove</button>
       </div>
     </div>

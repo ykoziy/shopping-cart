@@ -11,6 +11,18 @@ const Cart = (props) => {
     props.onItemRemove(itemId);
   };
 
+  const handleAddQuantity = (event) => {
+    const parentElement = event.target.parentNode.parentNode;
+    const itemId = parentElement.getAttribute('data-id');
+    props.onQuantityChange(itemId, 1);
+  };
+
+  const handleRemoveQuantity = (event) => {
+    const parentElement = event.target.parentNode.parentNode;
+    const itemId = parentElement.getAttribute('data-id');
+    props.onQuantityChange(itemId, -1);
+  };
+
   const cartDataToCard = (data) => {
     return (
       <CartItem
@@ -20,6 +32,8 @@ const Cart = (props) => {
         price={data.price}
         quantity={data.count}
         onClickHandler={handleRemoveItemClick}
+        onAddQuantity={handleAddQuantity}
+        onRemoveQuantity={handleRemoveQuantity}
       />
     );
   };

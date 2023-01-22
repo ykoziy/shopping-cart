@@ -48,6 +48,25 @@ const App = () => {
     setCartCount(cartCount - countRemoved);
   };
 
+  const onQuantityChange = (itemId, count) => {
+    let itemCount = 0;
+    let newCart = cart.map((item) => {
+      if (item.id === itemId) {
+        let newCount = item.count + count;
+        itemCount += newCount;
+        return { ...item, count: newCount };
+      }
+      return item;
+    });
+
+    if (itemCount === 0) {
+      onItemRemove(itemId);
+    } else {
+      setCart(newCart);
+      setCartCount(cartCount + count);
+    }
+  };
+
   const onCartEmpty = () => {
     setCart([]);
     setCartCount(0);
@@ -71,6 +90,7 @@ const App = () => {
                 onUpdate={onUpdate}
                 onItemRemove={onItemRemove}
                 onCartEmpty={onCartEmpty}
+                onQuantityChange={onQuantityChange}
                 cartCount={cartCount}
                 cart={cart}
               />
