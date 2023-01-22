@@ -23,6 +23,14 @@ const Cart = (props) => {
     props.onQuantityChange(itemId, -1);
   };
 
+  const getTotal = () => {
+    let total = 0;
+    props.cart.forEach((item) => {
+      total += item.price * item.count;
+    });
+    return total;
+  };
+
   const cartDataToCard = (data) => {
     return (
       <CartItem
@@ -46,10 +54,21 @@ const Cart = (props) => {
     return listItems;
   };
 
+  const renderTotals = () => {
+    return (
+      <div>
+        <h3>Cart Totals: </h3>
+        <p>Count: {props.cartCount}</p>
+        <p>Total: ${getTotal()}</p>
+      </div>
+    );
+  };
+
   return (
     <div>
       <h1>Hello from cart.</h1>
       {renderProducts()}
+      {renderTotals()}
       <button onClick={handleEmptyCartClick} disabled={props.cart.length === 0}>
         Empty Cart
       </button>
