@@ -70,7 +70,7 @@ const Cart = (props) => {
           </div>
           <div className="column2">
             <p>{props.cartCount}</p>
-            <p>${getTotal()}</p>
+            <p>${getTotal().toFixed(2)}</p>
           </div>
         </div>
       </>
@@ -81,19 +81,23 @@ const Cart = (props) => {
     <div className="cart-container">
       <h1>My Cart</h1>
       <div className="cart">
-        <div className="cart-list">{renderProducts()}</div>
-        <div className="cart-info">
-          {renderTotals()}
-          <div className="btn-container">
-            <button
-              onClick={handleEmptyCartClick}
-              disabled={props.cart.length === 0}
-            >
-              Empty Cart
-            </button>
-            <button onClick={handleCheckoutClick}>Checkout</button>
+        {props.cartCount !== 0 && (
+          <div className="cart-list">{renderProducts()}</div>
+        )}
+        {props.cartCount !== 0 && (
+          <div className="cart-info">
+            {renderTotals()}
+            <div className="btn-container">
+              <button
+                onClick={handleEmptyCartClick}
+                disabled={props.cart.length === 0}
+              >
+                Empty Cart
+              </button>
+              <button onClick={handleCheckoutClick}>Checkout</button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

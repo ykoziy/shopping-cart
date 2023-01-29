@@ -26,13 +26,11 @@ const App = () => {
     });
 
     if (isUpdated) {
-      console.log('update');
       setCart(newCart);
       setCartCount(totalCount);
     } else {
-      console.log('new');
       setCart([...cart, newItem]);
-      setCartCount(cartCount + 1);
+      setCartCount(cartCount + newItem.count);
     }
   };
 
@@ -73,7 +71,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <BrowserRouter>
         <Header cartCount={cartCount} />
         <Routes>

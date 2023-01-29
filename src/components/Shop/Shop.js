@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../../style/shop.scss';
 import ItemCard from './ItemCard';
 import products from '../../data/products';
 
@@ -9,13 +10,12 @@ const Shop = (props) => {
     setShopData(products);
   }, []);
 
-  const handleItemClick = (event) => {
+  const onItemAdd = (event) => {
     let targetElement;
-    if (event.target.nodeName !== 'DIV') {
-      targetElement = event.target.parentNode;
-    } else {
-      targetElement = event.target;
-    }
+    targetElement = event.target.parentNode;
+    const quantity = parseInt(
+      targetElement.querySelector('.quantity-input #quantity').value,
+    );
     let id = targetElement.getAttribute('data-id');
     let item = shopData.find((i) => i.id === id);
     if (item != null) {
@@ -23,7 +23,7 @@ const Shop = (props) => {
         id: item.id,
         name: item.name,
         price: item.price,
-        count: 1,
+        count: quantity,
       };
       props.onUpdate(newItem);
     }
@@ -39,7 +39,7 @@ const Shop = (props) => {
         description={data.description}
         price={data.price}
         image={data.image}
-        onClickHandler={handleItemClick}
+        onAddToCart={onItemAdd}
       />
     );
   };
@@ -53,9 +53,9 @@ const Shop = (props) => {
   };
 
   return (
-    <div>
-      <h1>Hello from shop.</h1>
-      {renderProducts()}
+    <div className="container">
+      <h1>My Shop</h1>
+      <div className="shopping-area">{renderProducts()}</div>
     </div>
   );
 };

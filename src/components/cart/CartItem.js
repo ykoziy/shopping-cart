@@ -5,7 +5,7 @@ const CartItem = (props) => {
     <div className="cart-item-card" data-id={props.id}>
       <div className="cart-item-top">
         <div className="cart-detail-left">
-          <p>Name: {props.name}</p>
+          <p>{props.name}</p>
           <p>Other data...</p>
         </div>
         <div className="cart-detail-center">
@@ -23,7 +23,7 @@ const CartItem = (props) => {
         </div>
         <div className="cart-detail-right">
           <p>Total</p>
-          <p>${props.quantity * props.price}</p>
+          <p>${(props.quantity * props.price).toFixed(2)}</p>
         </div>
       </div>
       <div className="cart-item-bottom">
