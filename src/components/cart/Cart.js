@@ -1,24 +1,29 @@
+import '../../style/cart.scss';
 import CartItem from './CartItem';
 
 const Cart = (props) => {
+  const handleCheckoutClick = () => {
+    console.log('checkout');
+  };
+
   const handleEmptyCartClick = () => {
     props.onCartEmpty();
   };
 
   const handleRemoveItemClick = (event) => {
-    const parentElement = event.target.parentNode.parentNode;
+    const parentElement = event.target.parentElement.closest('.cart-item-card');
     const itemId = parentElement.getAttribute('data-id');
     props.onItemRemove(itemId);
   };
 
   const handleAddQuantity = (event) => {
-    const parentElement = event.target.parentNode.parentNode;
+    const parentElement = event.target.parentElement.closest('.cart-item-card');
     const itemId = parentElement.getAttribute('data-id');
     props.onQuantityChange(itemId, 1);
   };
 
   const handleRemoveQuantity = (event) => {
-    const parentElement = event.target.parentNode.parentNode;
+    const parentElement = event.target.parentElement.closest('.cart-item-card');
     const itemId = parentElement.getAttribute('data-id');
     props.onQuantityChange(itemId, -1);
   };
@@ -56,22 +61,40 @@ const Cart = (props) => {
 
   const renderTotals = () => {
     return (
-      <div>
-        <h3>Cart Totals: </h3>
-        <p>Count: {props.cartCount}</p>
-        <p>Total: ${getTotal()}</p>
-      </div>
+      <>
+        <h3>Cart Totals</h3>
+        <div className="container">
+          <div className="column1">
+            <p>Count:</p>
+            <p>Total:</p>
+          </div>
+          <div className="column2">
+            <p>{props.cartCount}</p>
+            <p>${getTotal()}</p>
+          </div>
+        </div>
+      </>
     );
   };
 
   return (
-    <div>
-      <h1>Hello from cart.</h1>
-      {renderProducts()}
-      {renderTotals()}
-      <button onClick={handleEmptyCartClick} disabled={props.cart.length === 0}>
-        Empty Cart
-      </button>
+    <div className="cart-container">
+      <h1>My Cart</h1>
+      <div className="cart">
+        <div className="cart-list">{renderProducts()}</div>
+        <div className="cart-info">
+          {renderTotals()}
+          <div className="btn-container">
+            <button
+              onClick={handleEmptyCartClick}
+              disabled={props.cart.length === 0}
+            >
+              Empty Cart
+            </button>
+            <button onClick={handleCheckoutClick}>Checkout</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
