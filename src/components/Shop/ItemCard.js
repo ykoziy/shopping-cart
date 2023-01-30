@@ -26,6 +26,13 @@ const ItemCard = (props) => {
     }
   };
 
+  const checkIfEmpty = (event) => {
+    const value = event.target.value;
+    if (value === '') {
+      setQuantity(1);
+    }
+  };
+
   return (
     <div className="product-card" data-id={props.id}>
       <h4>{props.name}</h4>
@@ -41,6 +48,7 @@ const ItemCard = (props) => {
           min="0"
           value={quantity}
           onChange={handleChange}
+          onBlur={checkIfEmpty}
         />
         <button onClick={onAddQuantity}>+</button>
       </div>
@@ -48,12 +56,5 @@ const ItemCard = (props) => {
     </div>
   );
 };
-
-/* 
-> image size 240x240, https://via.placeholder.com/240
-> input field for quantity
-> + and - buttons for fine tuning
-> add to cart button (using input from the box, default one?)
-*/
 
 export default ItemCard;
