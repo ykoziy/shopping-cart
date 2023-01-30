@@ -1,11 +1,13 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../components/App';
 
 describe('Testing UI rendering', () => {
   it('renders my store app', () => {
     render(<App />);
-    const headingElement = screen.getByText(/my super store/i);
+    const headingElement = screen.getAllByText(/bean brigade/i, {
+      exact: true,
+    })[0];
     expect(headingElement).toBeInTheDocument();
   });
 });
@@ -42,7 +44,7 @@ describe('Testing Shop page', () => {
       name: /shop now/i,
     });
     fireEvent.click(openShopButton);
-    const headingElement = screen.getByText(/my shop/i);
+    const headingElement = screen.getByText(/bean brigade/i);
     expect(headingElement).toBeInTheDocument();
   });
 

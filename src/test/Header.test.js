@@ -4,7 +4,9 @@ import Header from '../components/App';
 describe('Testing UI rendering', () => {
   test('renders logo', () => {
     render(<Header />);
-    const headingElement = screen.getByText(/my super store/i);
+    const headingElement = screen.getAllByText(/bean brigade/i, {
+      exact: true,
+    })[0];
     expect(headingElement).toBeInTheDocument();
   });
 
@@ -27,7 +29,7 @@ describe('Testing interactions', () => {
     render(<Header />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
-    const headingElement = screen.getByText(/my shop/i);
+    const headingElement = screen.getByText(/bean brigade/i, { exact: true });
     expect(headingElement).toBeInTheDocument();
   });
 
@@ -35,7 +37,7 @@ describe('Testing interactions', () => {
     render(<Header />);
     const homeLink = screen.getByRole('link', { name: /home/i });
     fireEvent.click(homeLink);
-    const headingElement = screen.getByText(/shop at my store!!!/i);
+    const headingElement = screen.getByText(/shop at bean brigade/i);
     expect(headingElement).toBeInTheDocument();
   });
 
@@ -43,7 +45,7 @@ describe('Testing interactions', () => {
     render(<Header />);
     const aboutLink = screen.getByRole('link', { name: /about/i });
     fireEvent.click(aboutLink);
-    const headingElement = screen.getByText(/hello from about/i);
+    const headingElement = screen.getByText(/about bean brigade/i);
     expect(headingElement).toBeInTheDocument();
   });
 

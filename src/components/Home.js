@@ -1,5 +1,5 @@
 import '../style/home.scss';
-import landingBg from '../assets/landing_bg_test.jpg';
+import landingBg from '../assets/home-bg.jpg';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -14,8 +14,11 @@ const Home = () => {
       <article className="section1">
         <img src={landingBg} alt="landing page background"></img>
         <div className="call-to-action">
-          <h1>Shop at my store!!!</h1>
-          <h4>Shop random items that you don't need.</h4>
+          <h1>Shop at Bean Brigade</h1>
+          <h4>
+            Shop specialty coffee, roasted fresh, to order. It will blow your
+            socks off.
+          </h4>
           <button onClick={handleShopNowClick}>Shop Now</button>
         </div>
       </article>

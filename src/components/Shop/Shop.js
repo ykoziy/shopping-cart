@@ -54,7 +54,7 @@ const Shop = (props) => {
 
   return (
     <div className="container">
-      <h1>My Shop</h1>
+      <h1>Roasted Coffee</h1>
       <div className="shopping-area">{renderProducts()}</div>
     </div>
   );
