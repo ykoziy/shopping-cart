@@ -4,7 +4,7 @@ p {
 }
 
 .product-card {
-  border: 1px solid black;
+  border: 1px solid #342e27;
   display: flex;
   flex-direction: column;
   width: 290px;
@@ -19,10 +19,13 @@ p {
   justify-content: space-around;
   width: 100%;
   button {
+    background-color: #745e4a;
+    color: white;
     font-weight: bold;
     font-size: 25px;
     width: 35px;
     height: 35px;
+    border: 1px solid black;
   }
 }
 
@@ -34,7 +37,8 @@ input {
 }
 
 .product-card > button {
-  background-color: #d3d1dc;
+  background-color: #745e4a;
+  color: white;
   border-radius: 16px;
   border: 1px solid black;
   height: 45px;
