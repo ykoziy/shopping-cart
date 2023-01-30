@@ -1,5 +1,9 @@
 $bg-color: rgb(223, 217, 217);
 
+* {
+  box-sizing: border-box;
+}
+
 .app {
   background-color: $bg-color;
 }
