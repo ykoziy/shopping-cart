@@ -19,11 +19,6 @@
     "eject": "react-scripts eject"
   },
   "jest": {
-    "jestSonar": {
-      "reportPath": "coverage",
-      "reportFile": "test-report.xml",
-      "indent": 4
-    },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/index.js"
