@@ -18,7 +18,7 @@ jobs:
       - name: Test and coverage
         run: npm run test -- --coverage --no-watch --no-progress --browsers=ChromeHeadlessNoSandbox
       - name: Print Directory
-        run: ls
+        run: ls coverage
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
