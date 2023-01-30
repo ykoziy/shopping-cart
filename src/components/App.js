@@ -5,7 +5,7 @@ import Home from './Home';
 import Header from './Header';
 import Shop from './Shop/Shop';
 import About from './About';
-import Cart from './cart/Cart';
+import Cart from './Cart/Cart';
 
 const App = () => {
   const [cart, setCart] = useState([]);
