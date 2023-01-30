@@ -24,6 +24,12 @@
       "!src/index.js"
     ]
   },
+  "jestSonar": {
+    "sonar56x": true,
+    "reportPath": "reports",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
