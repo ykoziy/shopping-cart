@@ -10,9 +10,34 @@ describe('Testing UI rendering', () => {
   });
 });
 
+describe('Testing Checkout page', () => {
+  it('should be able to add item and checkout', () => {
+    render(<App />);
+    const shopLink = screen.getByRole('link', { name: /shop/i });
+    fireEvent.click(shopLink);
+
+    const addToCartBtn = screen.getAllByRole('button', {
+      name: /add to cart/i,
+    })[0];
+    fireEvent.click(addToCartBtn);
+
+    const cartLink = screen.getByRole('link', { name: /cart/i });
+    fireEvent.click(cartLink);
+
+    const checkoutBtn = screen.getByText(/checkout/i);
+    fireEvent.click(checkoutBtn);
+
+    const headingElement = screen.getByText(/checkout/i);
+    expect(headingElement).toBeInTheDocument();
+  });
+});
+
 describe('Testing Shop page', () => {
   it('should open the shop page, when clicking on shop now', () => {
     render(<App />);
+    const homeLink = screen.getByRole('link', { name: /home/i });
+    fireEvent.click(homeLink);
+
     const openShopButton = screen.getByRole('button', {
       name: /shop now/i,
     });

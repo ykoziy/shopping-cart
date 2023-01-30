@@ -6,6 +6,7 @@ import Header from './Header';
 import Shop from './Shop/Shop';
 import About from './About';
 import Cart from './Cart/Cart';
+import Checkout from './Checkout';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -76,9 +77,10 @@ const App = () => {
         <Header cartCount={cartCount} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop onUpdate={onUpdate} />} />
           <Route
-            path="/shop"
-            element={<Shop onUpdate={onUpdate} ShoppingCart />}
+            path="/checkout"
+            element={<Checkout cartCount={cartCount} cart={cart} />}
           />
           <Route path="/about" element={<About />} />
           <Route

@@ -1,7 +1,9 @@
 .cart-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .cart {
@@ -11,21 +13,12 @@
   grid-gap: 1rem;
 }
 
-.cart-list {
-  grid-column: span 1;
-  min-width: 450px;
-}
-
 .cart-info {
   grid-column: span 1;
   margin: 15px;
   padding: 10px;
+  height: 200px;
   width: 250px;
-  .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
 
 .btn-container {

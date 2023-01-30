@@ -1,9 +1,12 @@
 import '../../style/cart.scss';
+import { useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 
 const Cart = (props) => {
+  const navigate = useNavigate();
+
   const handleCheckoutClick = () => {
-    console.log('checkout');
+    navigate('/checkout');
   };
 
   const handleEmptyCartClick = () => {
