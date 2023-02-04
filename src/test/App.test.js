@@ -1,4 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent,
+  queryByTestId,
+  render,
+  screen,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../components/App';
 
@@ -23,7 +28,7 @@ describe('Testing Checkout page', () => {
     })[0];
     fireEvent.click(addToCartBtn);
 
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
 
     const checkoutBtn = screen.getByText(/checkout/i);
@@ -56,8 +61,8 @@ describe('Testing Shop page', () => {
       name: /add to cart/i,
     })[0];
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(1\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('1');
   });
 
   it('should allow user to add same item to the cart twice', () => {
@@ -69,8 +74,8 @@ describe('Testing Shop page', () => {
     })[0];
     fireEvent.click(addToCartBtn);
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(2\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('2');
   });
 
   it('should add a typed in quantity of item to the cart', () => {
@@ -85,8 +90,8 @@ describe('Testing Shop page', () => {
     userEvent.type(inputBox, '20');
     expect(inputBox).toHaveValue(20);
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(20\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('20');
   });
 
   it('should have item input for quantity that accepts only positive integers', () => {
@@ -103,8 +108,8 @@ describe('Testing Shop page', () => {
     fireEvent.blur(inputBox);
     expect(inputBox).toHaveValue(1);
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(1\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('1');
   });
 
   it('should be able to increment item count and add it to cart', () => {
@@ -126,8 +131,8 @@ describe('Testing Shop page', () => {
     expect(inputBox).toHaveValue(3);
 
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(3\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('3');
   });
 
   it('should be able to decrement item count and add it to cart', () => {
@@ -154,8 +159,8 @@ describe('Testing Shop page', () => {
     expect(inputBox).toHaveValue(2);
 
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(2\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('2');
   });
 
   it('should not decrement past 1', () => {
@@ -178,8 +183,8 @@ describe('Testing Shop page', () => {
     expect(inputBox).toHaveValue(1);
 
     fireEvent.click(addToCartBtn);
-    const cartItem = screen.getAllByRole('link', { name: /cart \(1\)/i });
-    expect(cartItem[0]).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('1');
   });
 });
 
@@ -194,7 +199,7 @@ describe('Testing Cart page', () => {
     })[0];
     fireEvent.click(addToCartBtn);
 
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
 
     const emptyCartBtn = screen.getByRole('button', {
@@ -202,8 +207,8 @@ describe('Testing Cart page', () => {
     });
     fireEvent.click(emptyCartBtn);
 
-    const cartItem = screen.getByRole('link', { name: /cart \(0\)/i });
-    expect(cartItem).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem).toBeNull();
   });
 
   it('should allow user to increment count', () => {
@@ -216,7 +221,7 @@ describe('Testing Cart page', () => {
     })[0];
     fireEvent.click(addToCartBtn);
 
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
 
     const incrementCountBtn = screen.getByRole('button', {
@@ -224,8 +229,8 @@ describe('Testing Cart page', () => {
     });
     fireEvent.click(incrementCountBtn);
 
-    const cartItem = screen.getByRole('link', { name: /cart \(2\)/i });
-    expect(cartItem).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('2');
   });
 
   it('should allow user to increment count, for one time and others unchanged', () => {
@@ -243,7 +248,7 @@ describe('Testing Cart page', () => {
     })[1];
     fireEvent.click(addToCartBtn2);
 
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
 
     const incrementCountBtn = screen.getAllByRole('button', {
@@ -251,8 +256,8 @@ describe('Testing Cart page', () => {
     })[0];
     fireEvent.click(incrementCountBtn);
 
-    const cartItem = screen.getByRole('link', { name: /cart \(3\)/i });
-    expect(cartItem).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('3');
   });
 
   it('should remove item when decreasing count to 0', () => {
@@ -265,7 +270,7 @@ describe('Testing Cart page', () => {
     })[0];
     fireEvent.click(addToCartBtn);
 
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
 
     const incrementCountBtn = screen.getByRole('button', {
@@ -273,8 +278,8 @@ describe('Testing Cart page', () => {
     });
     fireEvent.click(incrementCountBtn);
 
-    const cartItem = screen.getByRole('link', { name: /cart \(0\)/i });
-    expect(cartItem).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem).toBeNull();
   });
 
   it('should remove one of the items from the cart', () => {
@@ -292,7 +297,7 @@ describe('Testing Cart page', () => {
     })[1];
     fireEvent.click(addToCartBtn2);
 
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
 
     const removeFromCartBtn = screen.getAllByRole('button', {
@@ -300,7 +305,7 @@ describe('Testing Cart page', () => {
     })[0];
     fireEvent.click(removeFromCartBtn);
 
-    const cartItem = screen.getByRole('link', { name: /cart \(1\)/i });
-    expect(cartItem).toBeInTheDocument();
+    const cartItem = screen.queryByTestId('cart-count');
+    expect(cartItem.innerHTML).toBe('1');
   });
 });

@@ -15,7 +15,7 @@ describe('Testing UI rendering', () => {
     const homeLink = screen.getByRole('link', { name: /home/i });
     const shopLink = screen.getByRole('link', { name: /shop/i });
     const aboutLink = screen.getByRole('link', { name: /about/i });
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
 
     expect(homeLink).toBeInTheDocument();
     expect(shopLink).toBeInTheDocument();
@@ -51,7 +51,7 @@ describe('Testing interactions', () => {
 
   test('cart button click', () => {
     render(<Header />);
-    const cartLink = screen.getByRole('link', { name: /cart/i });
+    const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
     const headingElement = screen.getByText(/my cart/i);
     expect(headingElement).toBeInTheDocument();

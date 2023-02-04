@@ -10,9 +10,9 @@ header {
 header nav ul {
   list-style: none;
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
   gap: 10px;
-  a {
+  .nav-link {
     padding: 20px;
     text-decoration: none;
     color: black;
@@ -21,9 +21,46 @@ header nav ul {
     font-weight: bold;
     font-size: 1.8rem;
   }
-  a:hover {
+  .nav-link:hover {
     background-color: #745e4a;
     color: white;
+  }
+
+  .cart {
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    margin: 0;
+    display: flex;
+    padding: 25px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+
+    .cart-count {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: orangered;
+      position: absolute;
+      font-size: 2rem;
+      font-weight: bold;
+      top: 16px;
+      font-family: 'Courier New', Courier, monospace;
+    }
+  }
+
+  .cart-icon-container {
+    display: flex;
+    background-color: white;
+    border-radius: 50%;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    a:hover {
+      background-color: none;
+    }
   }
 }
 
