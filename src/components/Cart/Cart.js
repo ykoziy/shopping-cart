@@ -40,6 +40,7 @@ const Cart = (props) => {
   };
 
   const cartDataToCard = (data) => {
+    console.log(data);
     return (
       <CartItem
         key={data.id}
@@ -47,6 +48,7 @@ const Cart = (props) => {
         name={data.name}
         price={data.price}
         quantity={data.count}
+        image={data.image}
         onClickHandler={handleRemoveItemClick}
         onAddQuantity={handleAddQuantity}
         onRemoveQuantity={handleRemoveQuantity}
@@ -84,9 +86,7 @@ const Cart = (props) => {
     <div className="cart-container">
       <h1>My Cart</h1>
       <div className="cart">
-        {props.cartCount !== 0 && (
-          <div className="cart-list">{renderProducts()}</div>
-        )}
+        {props.cartCount !== 0 && renderProducts()}
         {props.cartCount !== 0 && (
           <div className="cart-info">
             {renderTotals()}

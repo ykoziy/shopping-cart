@@ -23,6 +23,7 @@ const Shop = (props) => {
         id: item.id,
         name: item.name,
         price: item.price,
+        image: item.image,
         count: quantity,
       };
       props.onUpdate(newItem);
