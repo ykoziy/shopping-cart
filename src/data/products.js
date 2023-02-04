@@ -1,30 +1,34 @@
 const products = [
   {
-    id: 'example-product-1',
-    name: 'Example Product 1',
-    description: 'An amazing product that everyone must buy.',
-    price: 45.99,
+    id: 'java-jolt',
+    name: 'Java Jolt Roast',
+    description:
+      'A wake-up call in every cup, with a strong and bold flavor. Beans grown in Sumatra.',
+    price: 25.99,
     image: 'https://via.placeholder.com/240',
   },
   {
-    id: 'example-product-2',
-    name: 'Example Product 2',
-    description: 'An amazing product that everyone must buy, right now.',
-    price: 29.99,
+    id: 'dark-knight',
+    name: 'Dark Knight Roast',
+    description:
+      'A rich and full-bodied roast, with notes of dark chocolate and a smoky finish. Coffee beans imported from Colombia.',
+    price: 19.99,
     image: 'https://via.placeholder.com/240',
   },
   {
-    id: 'example-product-3',
-    name: 'Example Product 3',
-    description: 'An amazing product that you want.',
-    price: 10.99,
+    id: 'arabian-nights',
+    name: 'Arabian Nights Roast',
+    description:
+      'Transport yourself to the markets of Marrakech with this rich and spicy blend. Imported from Yemen',
+    price: 22.99,
     image: 'https://via.placeholder.com/240',
   },
   {
-    id: 'example-product-4',
-    name: 'Example Product 4',
-    description: 'An amazing product that everyone wants but cannot afford.',
-    price: 500.99,
+    id: 'jungle-jump',
+    name: 'Jungle Jump',
+    description:
+      'A light roast with bright fruit notes and a bold, juicy flavor, inspired by exotic jungle coffee beans. Locally sourced in Papua New Guinea.',
+    price: 16.99,
     image: 'https://via.placeholder.com/240',
   },
 ];
