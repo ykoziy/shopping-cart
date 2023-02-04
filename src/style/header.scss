@@ -10,5 +10,26 @@ header {
 header nav ul {
   list-style: none;
   display: flex;
-  gap: 25px;
+  justify-content: flex-start;
+  gap: 10px;
+  a {
+    padding: 20px;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.5s;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 1.8rem;
+  }
+  a:hover {
+    background-color: #745e4a;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  header {
+    flex-direction: column;
+    height: 160px;
+  }
 }

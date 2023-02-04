@@ -9,6 +9,7 @@ main {
   justify-content: flex-end;
   align-items: center;
   padding: 0 60px;
+  top: 15px;
   position: relative;
 
   img {
@@ -23,6 +24,7 @@ main {
   .call-to-action {
     display: flex;
     flex-direction: column;
+    align-items: center;
     max-width: 200px;
     z-index: 3;
     padding: 15px;
@@ -32,7 +34,14 @@ main {
     color: white;
   }
 
-  .CallToAction button {
-    width: 100px;
+  .call-to-action button {
+    background-color: #745e4a;
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding: 10px;
   }
 }
