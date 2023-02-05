@@ -13,7 +13,7 @@ header nav ul {
   align-items: center;
   gap: 10px;
   .nav-link {
-    padding: 20px;
+    padding: 15px;
     text-decoration: none;
     color: black;
     transition: background-color 0.5s;
@@ -27,6 +27,7 @@ header nav ul {
   }
 
   .cart {
+    position: relative;
     border: none;
     width: 3rem;
     height: 3rem;
@@ -46,14 +47,14 @@ header nav ul {
       position: absolute;
       font-size: 2rem;
       font-weight: bold;
-      top: 16px;
+      top: -2px;
       font-family: 'Courier New', Courier, monospace;
     }
   }
 
   .cart-icon-container {
     display: flex;
-    background-color: white;
+    background-color: #cfc5b8;
     border-radius: 50%;
     padding: 1rem;
     justify-content: center;

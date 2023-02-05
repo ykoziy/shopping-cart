@@ -3,32 +3,43 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100vh;
 }
 
 .cart {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   margin-bottom: 50px;
   grid-auto-rows: auto;
   grid-gap: 15px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
 }
 
 .cart-info {
   margin: 15px;
   padding: 10px;
   height: 250px;
-  width: 250px;
+  max-width: 300px;
   display: flex;
   flex-direction: column;
+  justify-self: end;
+  gap: 15px;
+
   .container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
+    font-size: 1.8rem;
+
     .column2 {
       text-align: end;
+    }
+
+    p {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      font-weight: bold;
     }
   }
 }
@@ -45,6 +56,7 @@
 .btn-container {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
   button {
     @include mainBtnStyle;
     font-size: 1.1em;
@@ -55,8 +67,6 @@
 .cart-item-card {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
   background-color: #cfc5b8;
-  display: flex;
-  flex-direction: column;
   margin: 15px;
   padding: 10px;
   button {
@@ -70,6 +80,7 @@
 }
 
 .interaction-container {
+  width: fit-content;
   button {
     font-size: 1em;
     padding: 10px;
@@ -120,5 +131,31 @@
       line-height: 30px;
       font-weight: bold;
     }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .interaction-container {
+    align-self: center;
+  }
+
+  .cart-detail-right {
+    gap: 15px;
+  }
+
+  .edit-product {
+    gap: 15px;
+  }
+
+  .cart-info {
+    max-width: 100%;
   }
 }

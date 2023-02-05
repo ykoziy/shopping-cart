@@ -39,8 +39,11 @@ const Cart = (props) => {
     return total;
   };
 
+  const getTax = (total, taxRate) => {
+    return total * (taxRate / 100);
+  };
+
   const cartDataToCard = (data) => {
-    console.log(data);
     return (
       <CartItem
         key={data.id}
@@ -65,17 +68,25 @@ const Cart = (props) => {
   };
 
   const renderTotals = () => {
+    let subTotal, tax, total;
+    subTotal = getTotal();
+    tax = getTax(getTotal(), 5);
+    total = subTotal + tax;
+
     return (
       <>
-        <h3>Cart Totals</h3>
         <div className="container">
           <div className="column1">
             <p>Count:</p>
+            <p>Subtotal:</p>
+            <p>Sales Tax:</p>
             <p>Total:</p>
           </div>
           <div className="column2">
             <p>{props.cartCount}</p>
-            <p>${getTotal().toFixed(2)}</p>
+            <p>${subTotal.toFixed(2)}</p>
+            <p>${tax.toFixed(2)}</p>
+            <p>${total.toFixed(2)}</p>
           </div>
         </div>
       </>
