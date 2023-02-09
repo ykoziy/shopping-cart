@@ -75,17 +75,35 @@ const Cart = (props) => {
 
     return (
       <>
-        <div className="container">
+        <div className="cart-summary-container">
           <div className="column1">
-            <p>Count:</p>
-            <p>Subtotal:</p>
-            <p>Sales Tax:</p>
-            <p>Total:</p>
+            <p>Item(s):</p>
           </div>
           <div className="column2">
             <p>{props.cartCount}</p>
+          </div>
+        </div>
+        <div className="cart-summary-container">
+          <div className="column1">
+            <p>Subtotal:</p>
+          </div>
+          <div className="column2">
             <p>${subTotal.toFixed(2)}</p>
+          </div>
+        </div>
+        <div className="cart-summary-container">
+          <div className="column1">
+            <p>Sales Tax:</p>
+          </div>
+          <div className="column2">
             <p>${tax.toFixed(2)}</p>
+          </div>
+        </div>
+        <div className="cart-summary-container top-line">
+          <div className="column1">
+            <p>Total:</p>
+          </div>
+          <div className="column2">
             <p>${total.toFixed(2)}</p>
           </div>
         </div>

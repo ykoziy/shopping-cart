@@ -12,6 +12,17 @@ p {
   align-items: center;
   justify-content: space-evenly;
   gap: 10px;
+  img {
+    border: 1px solid #342e27;
+    box-shadow: 3px 3px 0 #342e27;
+    transition: box-shadow 0.5s;
+  }
+}
+
+.product-card:hover {
+  img {
+    box-shadow: 0px 0px 0 #342e27;
+  }
 }
 
 .quantity-input {
