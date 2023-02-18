@@ -1,4 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
+import coffeeImg from '../assets/coffee-logo.png';
 import '../style/header.scss';
 
 const Header = (props) => {
@@ -14,8 +15,8 @@ const Header = (props) => {
 
   return (
     <header>
-      <div className="Logo">
-        <h1>Bean Brigade</h1>
+      <div className="logo">
+        <h1>Bean</h1>
       </div>
       <nav>
         <ul>
@@ -53,13 +54,7 @@ const Header = (props) => {
             </NavLink>
           </li>
           <li>
-            <Link
-              end
-              to="/cart"
-              activeClassName="active"
-              className="cart"
-              data-testid="cart-link"
-            >
+            <Link to="/cart" className="cart" data-testid="cart-link">
               <div className="cart-icon-container">
                 <svg
                   style={{ color: 'red' }}

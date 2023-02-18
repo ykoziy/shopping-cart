@@ -5,6 +5,35 @@ header {
   padding-left: 25px;
   padding-right: 25px;
   height: 90px;
+
+  h1 {
+    font-family: 'Caveat', cursive;
+  }
+
+  .logo h1 {
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo h1::before {
+    background: url('../assets/coffee-logo.png') no-repeat 0 0;
+    content: ' ';
+    position: absolute;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    bottom: -3px;
+    left: 49px;
+    z-index: -1;
+  }
+
+  .logo h1::after {
+    content: 'Brigade';
+    position: absolute;
+    z-index: -1;
+    bottom: -17px;
+    left: 59px;
+  }
 }
 
 header nav ul {
