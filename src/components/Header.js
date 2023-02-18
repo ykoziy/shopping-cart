@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import '../style/header.scss';
 
 const Header = (props) => {
@@ -20,22 +20,46 @@ const Header = (props) => {
       <nav>
         <ul>
           <li>
-            <Link to="/" className="nav-link">
+            <NavLink
+              end
+              to="/"
+              className={({ isActive }) =>
+                isActive ? 'active nav-link' : 'nav-link'
+              }
+            >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/shop" className="nav-link">
+            <NavLink
+              end
+              to="/shop"
+              className={({ isActive }) =>
+                isActive ? 'active nav-link' : 'nav-link'
+              }
+            >
               Shop
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/about" className="nav-link">
+            <NavLink
+              end
+              to="/about"
+              className={({ isActive }) =>
+                isActive ? 'active nav-link' : 'nav-link'
+              }
+            >
               About
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/cart" className="cart" data-testid="cart-link">
+            <Link
+              end
+              to="/cart"
+              activeClassName="active"
+              className="cart"
+              data-testid="cart-link"
+            >
               <div className="cart-icon-container">
                 <svg
                   style={{ color: 'red' }}

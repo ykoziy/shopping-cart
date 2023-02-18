@@ -13,15 +13,19 @@ header nav ul {
   align-items: center;
   gap: 10px;
   .nav-link {
-    padding: 15px;
+    padding: 10px;
     text-decoration: none;
     color: black;
     transition: background-color 0.5s;
-    border: 1px solid black;
     font-weight: bold;
     font-size: 1.8rem;
   }
-  .nav-link:hover {
+
+  .active {
+    border-bottom: 2px solid #745e4a;
+  }
+
+  .nav-link:not(.active):hover {
     background-color: #745e4a;
     color: white;
   }
