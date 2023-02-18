@@ -1,16 +1,11 @@
-import {
-  fireEvent,
-  queryByTestId,
-  render,
-  screen,
-} from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../components/App';
 
 describe('Testing UI rendering', () => {
   it('renders my store app', () => {
     render(<App />);
-    const headingElement = screen.getAllByText(/bean brigade/i, {
+    const headingElement = screen.getAllByText(/bean/i, {
       exact: true,
     })[0];
     expect(headingElement).toBeInTheDocument();
@@ -49,8 +44,10 @@ describe('Testing Shop page', () => {
       name: /shop now/i,
     });
     fireEvent.click(openShopButton);
-    const headingElement = screen.getByText(/bean brigade/i);
-    expect(headingElement).toBeInTheDocument();
+    const cartHeadingElement = screen.getByText(/roasted coffee/i, {
+      exact: true,
+    });
+    expect(cartHeadingElement).toBeInTheDocument();
   });
 
   it('should allow user to add item to cart', () => {
