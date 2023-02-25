@@ -1,5 +1,4 @@
 import { NavLink, Link } from 'react-router-dom';
-import coffeeImg from '../assets/coffee-logo.png';
 import '../style/header.scss';
 
 const Header = (props) => {

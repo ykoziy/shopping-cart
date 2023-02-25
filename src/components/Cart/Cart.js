@@ -93,6 +93,14 @@ const Cart = (props) => {
         </div>
         <div className="cart-summary-container">
           <div className="column1">
+            <p>Shipping:</p>
+          </div>
+          <div className="column2">
+            <p>{'FREE'}</p>
+          </div>
+        </div>
+        <div className="cart-summary-container">
+          <div className="column1">
             <p>Sales Tax:</p>
           </div>
           <div className="column2">
