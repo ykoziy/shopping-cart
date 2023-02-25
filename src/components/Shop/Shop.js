@@ -5,6 +5,8 @@ import products from '../../data/products';
 
 const Shop = (props) => {
   const [shopData, setShopData] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     setShopData(products);
@@ -47,15 +49,43 @@ const Shop = (props) => {
 
   const renderProducts = () => {
     let listItems = [];
-    for (const element of shopData) {
-      listItems.push(dataToItemCard(element));
+    if (query === '') {
+      for (const element of shopData) {
+        listItems.push(dataToItemCard(element));
+      }
+    } else {
+      for (const element of filterData) {
+        listItems.push(dataToItemCard(element));
+      }
     }
+
     return listItems;
+  };
+
+  const handleChange = (event) => {
+    const userInput = event.target.value;
+    const products = shopData.filter((item) => {
+      if (userInput === '') return shopData;
+      return item.name.toLowerCase().includes(userInput.toLowerCase());
+    });
+    setFilterData(products);
+    setQuery(userInput);
   };
 
   return (
     <div className="container">
       <h1>Roasted Coffee</h1>
+      <div className="search-bar">
+        <input
+          type="search"
+          name="searchQuery"
+          value={query}
+          id="searchQuery"
+          placeholder="Search products"
+          autocomplete="off"
+          onChange={handleChange}
+        />
+      </div>
       <div className="shopping-area">{renderProducts()}</div>
     </div>
   );
