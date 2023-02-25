@@ -6,6 +6,7 @@ const Cart = (props) => {
   const navigate = useNavigate();
 
   const handleCheckoutClick = () => {
+    props.onCartEmpty();
     navigate('/checkout');
   };
 
