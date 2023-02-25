@@ -13,6 +13,7 @@ An app where user can browse items, add them to cart, update the cart and procee
 - add products to cart, by specifying quantity
 - manage cart: remove item, change quantity, empty cart
 - checkout, can press it but actual implementation is out of scope for this project
+- search products by name
 
 ## Challenges
 

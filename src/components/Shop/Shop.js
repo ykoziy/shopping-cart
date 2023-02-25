@@ -82,7 +82,7 @@ const Shop = (props) => {
           value={query}
           id="searchQuery"
           placeholder="Search products"
-          autocomplete="off"
+          autoComplete="off"
           onChange={handleChange}
         />
       </div>
