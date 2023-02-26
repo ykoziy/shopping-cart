@@ -90,5 +90,4 @@ const Shop = (props) => {
     </div>
   );
 };
-
 export default Shop;
