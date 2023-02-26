@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/shopping-cart/static/css/main.98a96495.css",
-    "main.js": "/shopping-cart/static/js/main.00389b3a.js",
+    "main.js": "/shopping-cart/static/js/main.20cf1002.js",
     "static/media/home-bg.jpg": "/shopping-cart/static/media/home-bg.0d777953ddec7324529d.jpg",
     "static/media/coffee-logo.png": "/shopping-cart/static/media/coffee-logo.49c4898a8dfebe0a92fc.png",
     "index.html": "/shopping-cart/index.html",
     "main.98a96495.css.map": "/shopping-cart/static/css/main.98a96495.css.map",
-    "main.00389b3a.js.map": "/shopping-cart/static/js/main.00389b3a.js.map"
+    "main.20cf1002.js.map": "/shopping-cart/static/js/main.20cf1002.js.map"
   },
   "entrypoints": [
     "static/css/main.98a96495.css",
-    "static/js/main.00389b3a.js"
+    "static/js/main.20cf1002.js"
   ]
 }
