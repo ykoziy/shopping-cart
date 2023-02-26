@@ -22,7 +22,7 @@ const Header = (props) => {
           <li>
             <NavLink
               end
-              to="/"
+              to="/shopping-cart"
               className={({ isActive }) =>
                 isActive ? 'active nav-link' : 'nav-link'
               }

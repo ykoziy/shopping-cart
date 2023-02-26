@@ -76,7 +76,7 @@ const App = () => {
       <BrowserRouter>
         <Header cartCount={cartCount} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/shopping-cart" element={<Home />} />
           <Route path="/shop" element={<Shop onUpdate={onUpdate} />} />
           <Route
             path="/checkout"
