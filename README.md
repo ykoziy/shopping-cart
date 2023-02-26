@@ -15,7 +15,7 @@ An app where user can browse items, add them to cart, update the cart and procee
 - checkout, can press it but actual implementation is out of scope for this project
 - search products by name
 
-# App
+# <a href="https://ykoziy.github.io/shopping-cart/" target="_blank">App</a>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/ykoziy/shopping-cart/main/bean-brigade-app.png" width="900"/>
