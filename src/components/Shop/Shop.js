@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import '../../style/shop.scss';
 import ItemCard from './ItemCard';
 import products from '../../data/products';
+import { add } from '../../app/CartSlice';
 
 const Shop = (props) => {
   const [shopData, setShopData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setShopData(products);
   }, []);
 
   const onItemAdd = (event) => {
-    let targetElement;
-    targetElement = event.target.parentNode;
+    const targetElement = event.target.parentNode;
     const quantity = parseInt(
       targetElement.querySelector('.quantity-input #quantity').value,
     );
     let id = targetElement.getAttribute('data-id');
     let item = shopData.find((i) => i.id === id);
+
     if (item != null) {
       let newItem = {
         id: item.id,
@@ -28,7 +31,7 @@ const Shop = (props) => {
         image: item.image,
         count: quantity,
       };
-      props.onUpdate(newItem);
+      dispatch(add(newItem));
     }
     event.stopPropagation();
   };

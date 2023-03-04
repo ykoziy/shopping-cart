@@ -1,12 +1,15 @@
 import { NavLink, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import '../style/header.scss';
 
-const Header = (props) => {
-  const cartCount = () => {
-    if (props.cartCount > 0) {
+const Header = () => {
+  const cartCount = useSelector((state) => state.cart.cartCount);
+
+  const setCartCount = () => {
+    if (cartCount > 0) {
       return (
         <div className="cart-count" data-testid="cart-count">
-          {props.cartCount}
+          {cartCount}
         </div>
       );
     }
@@ -70,7 +73,7 @@ const Header = (props) => {
                   ></path>
                 </svg>
               </div>
-              {cartCount()}
+              {setCartCount()}
             </Link>
           </li>
         </ul>
