@@ -1,9 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
+import { renderWithProviders } from './utils/test-util';
 import Header from '../components/App';
 
 describe('Testing UI rendering', () => {
   test('renders logo', () => {
-    render(<Header />);
+    renderWithProviders(<Header />);
     const headingElement = screen.getAllByText(/bean/i, {
       exact: true,
     })[0];
@@ -11,7 +12,7 @@ describe('Testing UI rendering', () => {
   });
 
   test('renders nav links', () => {
-    render(<Header />);
+    renderWithProviders(<Header />);
     const homeLink = screen.getByRole('link', { name: /home/i });
     const shopLink = screen.getByRole('link', { name: /shop/i });
     const aboutLink = screen.getByRole('link', { name: /about/i });
@@ -26,15 +27,15 @@ describe('Testing UI rendering', () => {
 
 describe('Testing interactions', () => {
   test('shop button click', () => {
-    render(<Header />);
+    renderWithProviders(<Header />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const headingElement = screen.getByText(/roasted coffee/i, { exact: true });
     expect(headingElement).toBeInTheDocument();
   });
 
-  test('home button click', () => {
-    render(<Header />);
+  renderWithProviders('home button click', () => {
+    renderWithProviders(<Header />);
     const homeLink = screen.getByRole('link', { name: /home/i });
     fireEvent.click(homeLink);
     const headingElement = screen.getByText(/shop at bean brigade/i);
@@ -42,7 +43,7 @@ describe('Testing interactions', () => {
   });
 
   test('about button click', () => {
-    render(<Header />);
+    renderWithProviders(<Header />);
     const aboutLink = screen.getByRole('link', { name: /about/i });
     fireEvent.click(aboutLink);
     const headingElement = screen.getByText(/about bean brigade/i);
@@ -50,7 +51,7 @@ describe('Testing interactions', () => {
   });
 
   test('cart button click', () => {
-    render(<Header />);
+    renderWithProviders(<Header />);
     const cartLink = screen.getByTestId('cart-link');
     fireEvent.click(cartLink);
     const headingElement = screen.getByText(/my cart/i);

@@ -1,5 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const removeItem = (state, action) => {
+  const { id } = action.payload;
+  let countRemoved = 0;
+  let newCart = state.cart.filter((item) => {
+    if (item.id === id) {
+      countRemoved = item.count;
+    }
+    return item.id !== id;
+  });
+  state.cart = newCart;
+  state.cartCount = state.cartCount - countRemoved;
+};
+
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
@@ -33,13 +46,26 @@ export const cartSlice = createSlice({
       }
     },
     update: (state, action) => {
-      // update cart item, change quantity
-      console.log('Calling update reducer');
+      const { id, count } = action.payload;
+      let itemCount = 0;
+      let newCart = state.cart.map((item) => {
+        if (item.id === id) {
+          let newCount = item.count + count;
+          itemCount += newCount;
+          return { ...item, count: newCount };
+        }
+        return item;
+      });
+
+      if (itemCount === 0) {
+        removeItem(state, action);
+      } else {
+        state.cart = newCart;
+        state.cartCount = state.cartCount + count;
+      }
     },
     remove: (state, action) => {
-      // find item
-      // remove it
-      console.log('Calling remove reducer');
+      removeItem(state, action);
     },
     empty: (state) => {
       state.cart = [];
@@ -50,26 +76,4 @@ export const cartSlice = createSlice({
 
 // action creation, generated on each reducer
 export const { add, remove, empty, update } = cartSlice.actions;
-
 export default cartSlice.reducer;
-
-// const onItemAdd = (event) => {
-//   let targetElement;
-//   targetElement = event.target.parentNode;
-//   const quantity = parseInt(
-//     targetElement.querySelector('.quantity-input #quantity').value,
-//   );
-//   let id = targetElement.getAttribute('data-id');
-//   let item = shopData.find((i) => i.id === id);
-//   if (item != null) {
-//     let newItem = {
-//       id: item.id,
-//       name: item.name,
-//       price: item.price,
-//       image: item.image,
-//       count: quantity,
-//     };
-//     props.onUpdate(newItem);
-//   }
-//   event.stopPropagation();
-// };

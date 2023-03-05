@@ -5,7 +5,7 @@ import ItemCard from './ItemCard';
 import products from '../../data/products';
 import { add } from '../../app/CartSlice';
 
-const Shop = (props) => {
+const Shop = () => {
   const [shopData, setShopData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [query, setQuery] = useState('');

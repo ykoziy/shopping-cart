@@ -1,10 +1,11 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { renderWithProviders } from './utils/test-util';
 import App from '../components/App';
 
 describe('Testing UI rendering', () => {
   it('renders my store app', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const headingElement = screen.getAllByText(/bean/i, {
       exact: true,
     })[0];
@@ -14,7 +15,7 @@ describe('Testing UI rendering', () => {
 
 describe('Testing Checkout page', () => {
   it('should be able to add item and checkout', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
 
@@ -36,7 +37,7 @@ describe('Testing Checkout page', () => {
 
 describe('Testing Shop page', () => {
   it('should open the shop page, when clicking on shop now', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const homeLink = screen.getByRole('link', { name: /home/i });
     fireEvent.click(homeLink);
 
@@ -51,7 +52,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should allow user to add item to cart', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const addToCartBtn = screen.getAllByRole('button', {
@@ -63,7 +64,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should allow user to add same item to the cart twice', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const addToCartBtn = screen.getAllByRole('button', {
@@ -76,7 +77,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should add a typed in quantity of item to the cart', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const inputBox = screen.getAllByRole('spinbutton')[0];
@@ -92,7 +93,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should have item input for quantity that accepts only positive integers', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const inputBox = screen.getAllByRole('spinbutton')[0];
@@ -110,7 +111,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should be able to increment item count and add it to cart', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const inputBox = screen.getAllByRole('spinbutton')[0];
@@ -133,7 +134,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should be able to decrement item count and add it to cart', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const inputBox = screen.getAllByRole('spinbutton')[0];
@@ -161,7 +162,7 @@ describe('Testing Shop page', () => {
   });
 
   it('should not decrement past 1', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
     const inputBox = screen.getAllByRole('spinbutton')[0];
@@ -187,7 +188,7 @@ describe('Testing Shop page', () => {
 
 describe('Testing Cart page', () => {
   it('should empty the entire cart', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
 
@@ -209,7 +210,7 @@ describe('Testing Cart page', () => {
   });
 
   it('should allow user to increment count', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
 
@@ -231,7 +232,7 @@ describe('Testing Cart page', () => {
   });
 
   it('should allow user to increment count, for one time and others unchanged', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
 
@@ -258,7 +259,7 @@ describe('Testing Cart page', () => {
   });
 
   it('should remove item when decreasing count to 0', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
 
@@ -280,7 +281,7 @@ describe('Testing Cart page', () => {
   });
 
   it('should remove one of the items from the cart', () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const shopLink = screen.getByRole('link', { name: /shop/i });
     fireEvent.click(shopLink);
 

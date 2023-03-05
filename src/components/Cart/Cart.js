@@ -1,40 +1,45 @@
 import '../../style/cart.scss';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { remove, empty, update } from '../../app/CartSlice';
 import CartItem from './CartItem';
 
-const Cart = (props) => {
+const Cart = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+  const cartCount = useSelector((state) => state.cart.cartCount);
 
   const handleCheckoutClick = () => {
-    props.onCartEmpty();
+    dispatch(empty());
     navigate('/checkout');
   };
 
   const handleEmptyCartClick = () => {
-    props.onCartEmpty();
+    dispatch(empty());
   };
 
   const handleRemoveItemClick = (event) => {
     const parentElement = event.target.parentElement.closest('.cart-item-card');
     const itemId = parentElement.getAttribute('data-id');
-    props.onItemRemove(itemId);
+    dispatch(remove({ id: itemId }));
   };
 
   const handleAddQuantity = (event) => {
     const parentElement = event.target.parentElement.closest('.cart-item-card');
     const itemId = parentElement.getAttribute('data-id');
-    props.onQuantityChange(itemId, 1);
+    dispatch(update({ id: itemId, count: 1 }));
   };
 
   const handleRemoveQuantity = (event) => {
     const parentElement = event.target.parentElement.closest('.cart-item-card');
     const itemId = parentElement.getAttribute('data-id');
-    props.onQuantityChange(itemId, -1);
+    dispatch(update({ id: itemId, count: -1 }));
   };
 
   const getTotal = () => {
     let total = 0;
-    props.cart.forEach((item) => {
+    cart.forEach((item) => {
       total += item.price * item.count;
     });
     return total;
@@ -62,7 +67,7 @@ const Cart = (props) => {
 
   const renderProducts = () => {
     let listItems = [];
-    for (const element of props.cart) {
+    for (const element of cart) {
       listItems.push(cartDataToCard(element));
     }
     return listItems;
@@ -81,7 +86,7 @@ const Cart = (props) => {
             <p>Item(s):</p>
           </div>
           <div className="column2">
-            <p>{props.cartCount}</p>
+            <p>{cartCount}</p>
           </div>
         </div>
         <div className="cart-summary-container">
@@ -124,15 +129,12 @@ const Cart = (props) => {
     <div className="cart-container">
       <h1>My Cart</h1>
       <div className="cart">
-        {props.cartCount !== 0 && renderProducts()}
-        {props.cartCount !== 0 && (
+        {cartCount !== 0 && renderProducts()}
+        {cartCount !== 0 && (
           <div className="cart-info">
             {renderTotals()}
             <div className="btn-container">
-              <button
-                onClick={handleEmptyCartClick}
-                disabled={props.cart.length === 0}
-              >
+              <button onClick={handleEmptyCartClick} disabled={cartCount === 0}>
                 Empty Cart
               </button>
               <button onClick={handleCheckoutClick}>Checkout</button>
