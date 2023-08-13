@@ -5,13 +5,22 @@ header {
   padding-left: 25px;
   padding-right: 25px;
   height: 90px;
+  margin-top: 15px;
 
   h1 {
     font-family: 'Caveat', cursive;
   }
 
+  .logo {
+    padding: 2px;
+    width: 150px;
+    height: 100px;
+    background-color: #cfc5b8;
+  }
+
   .logo h1 {
     position: relative;
+    width: fit-content;
     z-index: 1;
   }
 
@@ -48,6 +57,9 @@ header nav ul {
     transition: background-color 0.5s;
     font-weight: bold;
     font-size: 1.8rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: #cfc5b8;
   }
 
   .active {
@@ -88,6 +100,7 @@ header nav ul {
   .cart-icon-container {
     display: flex;
     background-color: #cfc5b8;
+    border: 1px solid white;
     border-radius: 50%;
     padding: 1rem;
     justify-content: center;
